@@ -8,7 +8,7 @@ require('dotenv').config()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb://127.0.0.1:27017/testmern?readPreference=primary&appname=MongoDB%20Compass&ssl=false",
+mongoose.connect("mongodb+srv://petsdom:ronalgreentea@mern-petsdom.l6zpy5s.mongodb.net/?retryWrites=true&w=majority",
 { useNewUrlParser:true })
 
 
