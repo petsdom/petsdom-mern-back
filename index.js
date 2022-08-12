@@ -13,6 +13,7 @@ mongoose.connect("mongodb+srv://petsdom:ronalgreentea@mern-petsdom.l6zpy5s.mongo
 
 
 app.post('/addfriend',async (req,res) =>{
+    res.set('Access-Control-Allow-Origin', '*');
     const name = req.body.name
     const age = req.body.age
     const friend = new FriendModel({name:name,age: age})
@@ -20,6 +21,7 @@ app.post('/addfriend',async (req,res) =>{
     res.send(friend)
 })
 app.get('/read',async (req,res) =>{
+    res.set('Access-Control-Allow-Origin', '*');
     FriendModel.find({},(err,result)=>{
         if(err){
             res.send(err)
@@ -30,6 +32,7 @@ app.get('/read',async (req,res) =>{
 })
 
 app.put('/update',async (req,res)=>{
+  res.set('Access-Control-Allow-Origin', '*');
   const newAge = req.body.newAge
   const id = req.body.id
 
