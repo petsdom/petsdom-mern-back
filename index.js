@@ -20,6 +20,7 @@ app.post('/addfriend',async (req,res) =>{
     res.send(friend)
 })
 app.get('/read',async (req,res) =>{
+    res.set('Access-Control-Allow-Origin', '*');
     FriendModel.find({},(err,result)=>{
         if(err){
             res.send(err)
