@@ -6,6 +6,14 @@ const FriendModel = require('./models/Friends')
 require('dotenv').config()
 
 app.use(cors())
+app.use((req,res,next)=>{
+    res.header('Access-Control-Allow-Headers, *, Access-Control-Allow-Origin', 'Origin, X-Requested-with, Content_Type,Accept,Authorization','http://localhost:4200');
+    if(req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
+        return res.status(200).json({});
+    }
+    next();
+});
 app.use(express.json())
 
 mongoose.connect("mongodb+srv://petsdom:ronalgreentea@mern-petsdom.l6zpy5s.mongodb.net/?retryWrites=true&w=majority",
@@ -13,7 +21,6 @@ mongoose.connect("mongodb+srv://petsdom:ronalgreentea@mern-petsdom.l6zpy5s.mongo
 
 
 app.post('/addfriend',async (req,res) =>{
-    res.set('Access-Control-Allow-Origin', '*');
     const name = req.body.name
     const age = req.body.age
     const friend = new FriendModel({name:name,age: age})
@@ -21,7 +28,6 @@ app.post('/addfriend',async (req,res) =>{
     res.send(friend)
 })
 app.get('/read',async (req,res) =>{
-    res.set('Access-Control-Allow-Origin', '*');
     FriendModel.find({},(err,result)=>{
         if(err){
             res.send(err)
@@ -32,7 +38,6 @@ app.get('/read',async (req,res) =>{
 })
 
 app.put('/update',async (req,res)=>{
-  res.set('Access-Control-Allow-Origin', '*');
   const newAge = req.body.newAge
   const id = req.body.id
 
