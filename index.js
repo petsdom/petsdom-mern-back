@@ -6,7 +6,7 @@ const FriendModel = require('./models/Friends')
 require('dotenv').config()
 
 app.use(cors({
-    origin:"https://petsdom-mern.tk"
+    origin:"*"
 }))
 app.use(express.json())
 
