@@ -1,11 +1,9 @@
 const express = require("express")
 const app = express()
-const cors = require('cors')
 const mongoose = require("mongoose")
 const FriendModel = require('./models/Friends')
 require('dotenv').config()
 
-app.use(cors())
 app.use(express.json())
 
 mongoose.connect("mongodb+srv://petsdom:ronalgreentea@mern-petsdom.l6zpy5s.mongodb.net/?retryWrites=true&w=majority",
