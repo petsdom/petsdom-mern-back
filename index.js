@@ -5,9 +5,20 @@ const mongoose = require("mongoose")
 const FriendModel = require('./models/Friends')
 require('dotenv').config()
 
-
-app.use(cors())
 app.use(express.json())
+var whitelist = ['http://petsdom-mern.tk', 'https://petsdom-mern.herokuapp.com/addfriend','https://petsdom-mern.herokuapp.com/read']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+// Then pass them to cors:
+app.use(cors(corsOptions));
 
 app.use(cors(corsOptions))
 mongoose.connect("mongodb+srv://petsdom:ronalgreentea@mern-petsdom.l6zpy5s.mongodb.net/?retryWrites=true&w=majority",
