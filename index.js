@@ -5,12 +5,10 @@ const mongoose = require("mongoose")
 const FriendModel = require('./models/Friends')
 require('dotenv').config()
 
+
+app.use(cors())
 app.use(express.json())
-const corsOptions ={
-    origin: '*', 
-    credentials:true,            
-    optionSuccessStatus:200
-}
+
 app.use(cors(corsOptions))
 mongoose.connect("mongodb+srv://petsdom:ronalgreentea@mern-petsdom.l6zpy5s.mongodb.net/?retryWrites=true&w=majority",
 { useNewUrlParser:true })
