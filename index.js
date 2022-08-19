@@ -7,8 +7,6 @@ require('dotenv').config()
 
 app.use(express.json())
 app.use(cors())
-
-app.use(cors(corsOptions))
 mongoose.connect("mongodb+srv://petsdom:ronalgreentea@mern-petsdom.l6zpy5s.mongodb.net/?retryWrites=true&w=majority",
 { useNewUrlParser:true })
 
