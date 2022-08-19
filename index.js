@@ -7,7 +7,7 @@ require('dotenv').config()
 
 app.use(express.json())
 const corsOptions ={
-    origin:'http://petsdom-mern.tk', 
+    origin: '*', 
     credentials:true,            
     optionSuccessStatus:200
 }
